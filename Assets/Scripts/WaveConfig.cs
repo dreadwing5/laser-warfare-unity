@@ -22,7 +22,7 @@ public class WaveConfig : ScriptableObject
         {
             waveWayPoints.Add(child);
         }
-        return waveWayPoints;
+        return waveWayPoints; //waypoints definde in inspector
     }
 
     public float GetTimeBetweenSpawn() { return timeBetweenSpawn; }
