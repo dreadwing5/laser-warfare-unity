@@ -127,12 +127,11 @@ MonoBehaviour:
   wavesClearedRequired: 020000000300000004000000
   enemySprites:
   - {fileID: 21300000, guid: de8a5b1b5e7c6456fab63ea72c121ac6, type: 3}
-  - {fileID: 21300000, guid: f2903f6cfdfb84d42a83094dbd41acb3, type: 3}
-  - {fileID: 21300000, guid: ff852ed46dba64d8892bb938ba76e0a6, type: 3}
   maxTimeBetweenShotsBonus: -0.1
   healthBonus: 10
   projectileSpeedBonus: 2
   numofEnemiesBonus: 1
+  maxBonus: 50
 --- !u!58 &58917442992043918
 CircleCollider2D:
   m_ObjectHideFlags: 0

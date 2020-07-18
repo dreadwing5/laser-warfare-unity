@@ -126,13 +126,12 @@ MonoBehaviour:
   laserVolume: 0.2
   wavesClearedRequired: 020000000300000004000000
   enemySprites:
-  - {fileID: 21300000, guid: 154d9ba8fdd004880b10dffa11dc9cb9, type: 3}
-  - {fileID: 21300000, guid: 2d07a874e23594ce7ad79950cdfe134f, type: 3}
-  - {fileID: 21300000, guid: 412b58b8f17a543de954c86792d14945, type: 3}
+  - {fileID: 21300000, guid: a1768dc91ee3d4e77993ba13ddfb3d34, type: 3}
   maxTimeBetweenShotsBonus: -0.1
   healthBonus: 10
   projectileSpeedBonus: 1
   numofEnemiesBonus: 1
+  maxBonus: 200
 --- !u!58 &58767468583209998
 CircleCollider2D:
   m_ObjectHideFlags: 0

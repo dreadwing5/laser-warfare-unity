@@ -133,6 +133,7 @@ MonoBehaviour:
   healthBonus: 10
   projectileSpeedBonus: 2
   numofEnemiesBonus: 1
+  maxBonus: 30
 --- !u!58 &58917442992043918
 CircleCollider2D:
   m_ObjectHideFlags: 0

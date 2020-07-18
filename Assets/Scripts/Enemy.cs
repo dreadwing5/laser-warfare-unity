@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float healthBonus= 10f;
     [SerializeField] float projectileSpeedBonus=0.1f;
     [SerializeField] int numofEnemiesBonus=1;
+    [SerializeField] int maxBonus = 200;
 
 
 
@@ -123,7 +124,8 @@ public class Enemy : MonoBehaviour
             shipLevel =wavesClearedRequired.Length;
             Debug.Log("Enemy Ship Level is  : " + shipLevel);
             Debug.Log("health is " + currentHealth + " at ShipLevel " + shipLevel);
-            HandleShipLevel(shipLevel);
+            
+            HandleMaxShipLevel(shipLevel);
         }
         else
         {
@@ -137,6 +139,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
+  
+
     public void HandleShipLevel(int shipLevel)
     {
         if (shipLevel != 0)
@@ -147,10 +151,21 @@ public class Enemy : MonoBehaviour
                 Debug.Log("maxTimeBetweenShots is " + maxTimeBetweenShots + " at ShipLevel " + shipLevel);
             Debug.Log("projectileSpeed is " + projectileSpeed + " at ShipLevel " + shipLevel);
             Debug.Log("health is " + currentHealth + " at ShipLevel " + shipLevel);
-            this.GetComponent<SpriteRenderer>().sprite = enemySprites[shipLevel - 1];
         }
 
        
+
+    }
+
+    public void HandleMaxShipLevel(int shipLevel)
+    {
+        this.GetComponent<SpriteRenderer>().sprite = enemySprites[0];
+        maxTimeBetweenShots += maxTimeBetweenShotsBonus * shipLevel;
+        projectileSpeed += projectileSpeedBonus * shipLevel;
+        currentHealth = currentHealth + maxBonus;
+        Debug.Log("maxTimeBetweenShots is " + maxTimeBetweenShots + " at ShipLevel " + shipLevel);
+        Debug.Log("projectileSpeed is " + projectileSpeed + " at ShipLevel " + shipLevel);
+        Debug.Log("health is " + currentHealth + " at ShipLevel " + shipLevel);
 
     }
 }
