@@ -126,7 +126,7 @@ MonoBehaviour:
   laserVolume: 0.2
   wavesClearedRequired: 020000000300000004000000
   enemySprites:
-  - {fileID: 21300000, guid: a1768dc91ee3d4e77993ba13ddfb3d34, type: 3}
+  - {fileID: 21300000, guid: 909b86b7e96714554a13e3c7ba0ae0e3, type: 3}
   maxTimeBetweenShotsBonus: -0.1
   healthBonus: 10
   projectileSpeedBonus: 1

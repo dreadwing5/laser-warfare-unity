@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float maxTimeBetweenShotsBonus=-0.1f;
     [SerializeField] float healthBonus= 10f;
     [SerializeField] float projectileSpeedBonus=0.1f;
-    [SerializeField] int numofEnemiesBonus=1;
+    [SerializeField] int numofEnemiesBonus=2;
     [SerializeField] int maxBonus = 200;
 
 
@@ -159,6 +159,7 @@ public class Enemy : MonoBehaviour
 
     public void HandleMaxShipLevel(int shipLevel)
     {
+       
         this.GetComponent<SpriteRenderer>().sprite = enemySprites[0];
         maxTimeBetweenShots += maxTimeBetweenShotsBonus * shipLevel;
         projectileSpeed += projectileSpeedBonus * shipLevel;
