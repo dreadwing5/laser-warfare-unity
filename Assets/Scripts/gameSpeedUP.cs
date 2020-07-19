@@ -6,7 +6,7 @@ public class gameSpeedUP : MonoBehaviour
 {
     GameSession gameSession;
     int score;
-    // Start is called before the first frame update...
+    // Start is called before the first frame update...new changes have been added.
     void Start()
     {
         gameSession = FindObjectOfType<GameSession>();
