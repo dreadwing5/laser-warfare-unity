@@ -20,9 +20,9 @@ public class Player : MonoBehaviour
 
     [Header("Projectile")]
 
-    [SerializeField] float projectileSpeed = 10f;
-    [SerializeField] float projectileFiringRate = 0.1f;
-    [SerializeField] GameObject laserPrefab;
+    [SerializeField] public float projectileSpeed = 10f;
+    [SerializeField] public float projectileFiringRate = 0.1f;
+    [SerializeField] public GameObject laserPrefab;
 
 
     [Header("Power Ups")]
@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     [SerializeField] float levelUpFiringRateBonus = -0.005f;
     [SerializeField] int projectileSpeedBonus = 5;
     [SerializeField] Sprite[] playerShipArray;
+    [SerializeField] GameObject[] sideGuns;
     ShipLevel shiplevel;
 
 
@@ -100,7 +101,7 @@ public class Player : MonoBehaviour
     }
      
 
-    private void Fire()
+    public void Fire()
     {
         if(Input.GetButtonDown("Fire1"))
         {
@@ -185,6 +186,18 @@ public class Player : MonoBehaviour
         projectileSpeed += projectileSpeedBonus;
         FindObjectOfType<HealthBar>().SetMaxHealth(maxHealth);
 
+    }
+
+    public void ActivateSideGuns()
+    {
+        {
+
+            foreach (GameObject guns in sideGuns)
+            {
+                guns.SetActive(true);
+                Debug.Log("Setting Active");
+            }
+        }
     }
 }
 
