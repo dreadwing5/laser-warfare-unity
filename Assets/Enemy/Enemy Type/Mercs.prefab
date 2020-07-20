@@ -116,7 +116,7 @@ MonoBehaviour:
   enemyKillPoints: 250
   healthPack: {fileID: 7047835993023135087, guid: 8ea891e2778494060bcb053a89b7dd4a,
     type: 3}
-  chancesToDropPowerUp: 2
+  chancesToDropPowerUp: 100
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 0.7
   laserPrefab: {fileID: 6073706455026392243, guid: 054c0b518fde047f78ea0a21a3cf6256,
@@ -132,6 +132,10 @@ MonoBehaviour:
   projectileSpeedBonus: 2
   numofEnemiesBonus: 1
   maxBonus: 50
+  chanceForSpecificDrop: 190000004b000000
+  powerUps:
+  - {fileID: 7047835993023135087, guid: 8ea891e2778494060bcb053a89b7dd4a, type: 3}
+  - {fileID: 7180332110585792292, guid: c34948ef5c4a44693a905bfeeb99f4e3, type: 3}
 --- !u!58 &58917442992043918
 CircleCollider2D:
   m_ObjectHideFlags: 0

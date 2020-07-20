@@ -36,6 +36,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float projectileSpeedBonus=0.1f;
     [SerializeField] int numofEnemiesBonus=2;
     [SerializeField] int maxBonus = 200;
+    [SerializeField] [Range(1, 100)] int[] chanceForSpecificDrop;
+    [SerializeField] GameObject[] powerUps;
 
 
 
@@ -108,9 +110,32 @@ public class Enemy : MonoBehaviour
         int roll = UnityEngine.Random.Range(1, 101);
         if(roll<=chancesToDropPowerUp)
         {
-            GameObject newHealthPack= Instantiate(healthPack, transform.position, Quaternion.identity) as GameObject;
+            GameObject chosenPowerUp = RandomizePowerUpType();
+            GameObject newPowerUp = Instantiate(chosenPowerUp, transform.position, Quaternion.identity) as GameObject;  
 
         }
+    }
+    private GameObject RandomizePowerUpType()
+    {
+
+        GameObject dropType = null;
+        int roll = UnityEngine.Random.Range(1, 101);
+        for (int i = 0; i < chanceForSpecificDrop.Length; i++)
+        {
+            if (roll <= chanceForSpecificDrop[i])
+            {
+                dropType = powerUps[i];
+                break;
+
+            }
+
+            else
+            {
+                roll -= chanceForSpecificDrop[i];
+            }
+
+        }
+        return dropType;
     }
 
     public void CheckForWavesCleared()
