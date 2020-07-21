@@ -37,7 +37,9 @@ public class Player : MonoBehaviour
     [SerializeField] int projectileSpeedBonus = 5;
     [SerializeField] Sprite[] playerShipArray;
     [SerializeField] GameObject[] sideGuns;
+    [SerializeField] float maxPowerUpDuration = 30f;
     ShipLevel shiplevel;
+
 
 
     Coroutine firingCoroutine;
@@ -190,13 +192,23 @@ public class Player : MonoBehaviour
 
     public void ActivateSideGuns()
     {
-        {
 
-            foreach (GameObject guns in sideGuns)
-            {
-                guns.SetActive(true);
-                Debug.Log("Setting Active");
-            }
+        foreach (GameObject guns in sideGuns)
+        {
+            guns.SetActive(true);
+            Debug.Log("Setting Active");
+        }
+        StartCoroutine(WaitAndSetActive());
+    }
+
+    IEnumerator WaitAndSetActive()
+    {
+
+        yield return new WaitForSeconds(maxPowerUpDuration);
+        Debug.Log("Power Up Duration is : " + maxPowerUpDuration);
+        foreach (GameObject guns in sideGuns)
+        {
+            guns.SetActive(false);
         }
     }
 }
