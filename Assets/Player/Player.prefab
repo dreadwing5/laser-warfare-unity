@@ -4991,7 +4991,7 @@ MonoBehaviour:
   levelUpVFX: {fileID: 1652309148185943340, guid: c88eaad7b00e749f2a9e44b4d7295b26,
     type: 3}
   levelUpSFX: {fileID: 8300000, guid: 7670984bb2d5548ec9881248fadcddd1, type: 3}
-  levelUpScoreRequired: 50c30000f8240100a0860100
+  levelUpScoreRequired: a861000050c30000a0860100
   currentLevel: 0
   levelUpSFXVolume: 0.57
   levelUpHealthBonus: 50
