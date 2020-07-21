@@ -18,5 +18,5 @@ MonoBehaviour:
     type: 3}
   timeBetweenSpawn: 0.3
   spawnRandomFactor: 0.3
-  numberOfEnemies: 6
-  moveSpeed: 7
+  numberOfEnemies: 10
+  moveSpeed: 10

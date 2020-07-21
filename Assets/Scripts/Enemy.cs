@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float durationOfExplosion = 1f;
     [SerializeField] int enemyKillPoints = 150;
     [SerializeField] GameObject healthPack;
-    [SerializeField] [Range(1, 100)] float chancesToDropPowerUp = 40f;
+    [SerializeField] [Range(1, 100)] public float chancesToDropPowerUp = 40f;
 
     [Header("Enemy Laser")]
 

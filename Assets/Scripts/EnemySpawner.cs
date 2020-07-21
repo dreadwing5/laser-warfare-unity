@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     private WaveCleared waveCleared;
     private Enemy enemyBehaviour;
     [SerializeField] public int numWavesCleared=0;
+    [SerializeField] float waveSpawnTime = 2f;
  
     // Start is called before the first frame update
     IEnumerator Start()
@@ -19,9 +20,7 @@ public class EnemySpawner : MonoBehaviour
         do
         {
           yield return StartCoroutine(SpawnAllWaves());
-            numWavesCleared++;
-            Debug.Log("Current Wave = " + numWavesCleared);
-            waveCleared.UpdateCurrentWave(numWavesCleared);
+            
         }
 
         while (looping);
@@ -34,7 +33,15 @@ public class EnemySpawner : MonoBehaviour
             {
             var currentWave = waveConfigs[waveIndex];
             yield return StartCoroutine(SpawnAllEnemyInWave(currentWave));
-            
+            numWavesCleared++;
+            Debug.Log("Current Wave = " + numWavesCleared);
+            waveCleared.UpdateCurrentWave(numWavesCleared);
+            if (numWavesCleared >= 10)
+            {
+                waveSpawnTime -= 0.1f;
+            }
+            yield return new WaitForSeconds(waveSpawnTime);
+
         }
         
 

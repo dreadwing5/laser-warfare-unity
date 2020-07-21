@@ -4991,7 +4991,7 @@ MonoBehaviour:
   levelUpVFX: {fileID: 1652309148185943340, guid: c88eaad7b00e749f2a9e44b4d7295b26,
     type: 3}
   levelUpSFX: {fileID: 8300000, guid: 7670984bb2d5548ec9881248fadcddd1, type: 3}
-  levelUpScoreRequired: e80300008813000010270000
+  levelUpScoreRequired: 50c30000f8240100a0860100
   currentLevel: 0
   levelUpSFXVolume: 0.57
   levelUpHealthBonus: 50
@@ -5004,6 +5004,7 @@ MonoBehaviour:
   sideGuns:
   - {fileID: 692178886}
   - {fileID: 1628160619}
+  maxPowerUpDuration: 30
 --- !u!60 &60231580321951438
 PolygonCollider2D:
   m_ObjectHideFlags: 0

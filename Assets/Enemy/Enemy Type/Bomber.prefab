@@ -125,7 +125,7 @@ MonoBehaviour:
   projectileSpeed: 5
   laserSound: {fileID: 8300000, guid: 50f3fe5b45663432685b7faa6e5c0200, type: 3}
   laserVolume: 0.3
-  wavesClearedRequired: 020000000300000004000000
+  wavesClearedRequired: 0a0000001e00000032000000
   enemySprites:
   - {fileID: 21300000, guid: 47e930dec379c4d3b9d9c0ca70ae67be, type: 3}
   maxTimeBetweenShotsBonus: -0.1
@@ -133,7 +133,7 @@ MonoBehaviour:
   projectileSpeedBonus: 2
   numofEnemiesBonus: 1
   maxBonus: 200
-  chanceForSpecificDrop: 3d00000028000000
+  chanceForSpecificDrop: 1400000050000000
   powerUps:
   - {fileID: 7047835993023135087, guid: 8ea891e2778494060bcb053a89b7dd4a, type: 3}
   - {fileID: 7180332110585792292, guid: c34948ef5c4a44693a905bfeeb99f4e3, type: 3}

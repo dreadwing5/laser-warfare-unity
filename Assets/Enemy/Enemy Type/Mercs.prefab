@@ -116,7 +116,7 @@ MonoBehaviour:
   enemyKillPoints: 250
   healthPack: {fileID: 7047835993023135087, guid: 8ea891e2778494060bcb053a89b7dd4a,
     type: 3}
-  chancesToDropPowerUp: 5
+  chancesToDropPowerUp: 10
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 0.7
   laserPrefab: {fileID: 6073706455026392243, guid: 054c0b518fde047f78ea0a21a3cf6256,
@@ -124,7 +124,7 @@ MonoBehaviour:
   projectileSpeed: 8
   laserSound: {fileID: 8300000, guid: da14e69e0190c44b38fbae233036e57a, type: 3}
   laserVolume: 0.25
-  wavesClearedRequired: 020000000300000004000000
+  wavesClearedRequired: 0a0000001e00000032000000
   enemySprites:
   - {fileID: 21300000, guid: de8a5b1b5e7c6456fab63ea72c121ac6, type: 3}
   maxTimeBetweenShotsBonus: -0.1
