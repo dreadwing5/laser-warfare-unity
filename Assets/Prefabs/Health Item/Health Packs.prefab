@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPickUpSound: {fileID: 8300000, guid: d546e8ebaa2eb418e8eac55dc04ec9bf, type: 3}
-  healthPickUpVolume: 0.75
+  healthPickUpVolume: 0.25
   healthPackType:
   - {fileID: 21300000, guid: 5e8a355535f124eaea10ebe2c7137adb, type: 3}
   - {fileID: 21300000, guid: 58cbee4fda9884df9975ae4e18e3c999, type: 3}
