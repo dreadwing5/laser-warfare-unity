@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5666230923289801821}
   - component: {fileID: 5666230923289801820}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Aesteroid Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
