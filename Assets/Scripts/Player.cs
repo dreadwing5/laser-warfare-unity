@@ -12,11 +12,13 @@ public class Player : MonoBehaviour
 
 
     [SerializeField] float moveSpeed = 10f;
-    [SerializeField] float padding = 1f;
+    [SerializeField] float padding = 0.5f;
     [SerializeField] public float currentHealth=500f;
     [SerializeField] public  float maxHealth = 500f;
     [SerializeField] AudioClip deathSound;
     [SerializeField][Range(0,1)] float deathSoundVolume = 0.75f;
+    [SerializeField] AudioClip playerHitSound;
+    [SerializeField] [Range(0, 1)] float playerHitSOundVolume;
 
     [Header("Projectile")]
 
@@ -83,6 +85,7 @@ public class Player : MonoBehaviour
     private void ProcessHit(DamageDealer damageDealer)
     {
         currentHealth -= damageDealer.GetDamage();
+        AudioSource.PlayClipAtPoint(playerHitSound, Camera.main.transform.position, playerHitSOundVolume);
         damageDealer.Hit();
         FindObjectOfType<HealthBar>().SetHealth(currentHealth);
 

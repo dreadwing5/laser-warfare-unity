@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1687464ef9a4b79be12e30036a7107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 500
 --- !u!114 &2208274907928325145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b71e0ade27cc4476a034db1f98f26fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 500
+  Health: 1000
   deathVFX: {fileID: 4437384259208670435, guid: 2a330ac1289fc431a9ff5535f9d38629,
     type: 3}
   deathSoundVolume: 0.358
