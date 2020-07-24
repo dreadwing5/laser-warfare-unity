@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2208274907928325146}
   - component: {fileID: 2208274907928325145}
   - component: {fileID: 114116811160248108}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Aesteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
