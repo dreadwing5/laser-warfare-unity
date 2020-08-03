@@ -16,5 +16,6 @@
             "**/Library": true,
             "**/ProjectSettings": true,
             "**/Temp": true
-        }
+        },
+        "editor.fontSize": 11
 }
