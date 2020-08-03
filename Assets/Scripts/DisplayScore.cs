@@ -18,6 +18,7 @@ public class DisplayScore : MonoBehaviour
     void Update()
     {
         scoreText.text = gameSession.GetScore().ToString();
+        
     }
 
     
