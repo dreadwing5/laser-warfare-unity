@@ -7,7 +7,7 @@ public class Aesteroid : MonoBehaviour
 {
     [SerializeField] int Health = 500;
     [SerializeField] GameObject deathVFX;
-    [SerializeField] [Range(0,1)] float deathSoundVolume;
+    [SerializeField] [Range(0, 1)] float deathSoundVolume;
     [SerializeField] AudioClip deathSound;
     [SerializeField] float durationOfExplosion;
     [SerializeField] int points;
@@ -24,7 +24,7 @@ public class Aesteroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void OnTriggerEnter2D(Collider2D other)
 
