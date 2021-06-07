@@ -1,3 +1,4 @@
-# Laser_Warfare
-Repository for my  arcade shooter game Laser Warfare made in Unity. Feel free to use my assets.
-Game Link: https://dreadwing5.itch.io/laser-warfare
+# Laser Warfare ## : An original take on the classic arcade shooter game Galaxy Attack: Alien Shooter. 
+
+This game was created using Unity Engine. You can play the game here :  https://dreadwing5.itch.io/laser-warfare 
+Have Fun!
