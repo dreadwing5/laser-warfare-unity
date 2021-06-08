@@ -13,10 +13,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = 0.5f;
-    [SerializeField] public float currentHealth=500f;
-    [SerializeField] public  float maxHealth = 500f;
+    [SerializeField] public float currentHealth = 500f;
+    [SerializeField] public float maxHealth = 500f;
     [SerializeField] AudioClip deathSound;
-    [SerializeField][Range(0,1)] float deathSoundVolume = 0.75f;
+    [SerializeField] [Range(0, 1)] float deathSoundVolume = 0.75f;
     [SerializeField] AudioClip playerHitSound;
     [SerializeField] [Range(0, 1)] float playerHitSOundVolume;
 
@@ -41,6 +41,11 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject[] sideGuns;
     [SerializeField] float maxPowerUpDuration = 30f;
     ShipLevel shiplevel;
+    float reloadTime = 0.5f;
+    public float nextFireTime = 0.0f;
+    public float nextFire = 1.5F;
+
+    [SerializeField] PowerUp powerUp;
 
 
 
@@ -51,7 +56,8 @@ public class Player : MonoBehaviour
     float maxX;
     float minY;
     float maxY;
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,8 +65,8 @@ public class Player : MonoBehaviour
         FindObjectOfType<HealthBar>().SetMaxHealth(maxHealth);
         SetUpMoveBoundaries();
         shiplevel = FindObjectOfType<ShipLevel>();
-        
-        
+        // Debug.Log(powerUp.isPowerUp);
+
     }
 
 
@@ -69,10 +75,22 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
-        Fire();
 
-        
+        //Auto fire for Mobile devices
+        if (Time.time > nextFire)
+        {
+            nextFire = Time.time + projectileFiringRate;
+
+
+            Shoot();
+
+
+
+        }
+
+
     }
+
     private void OnTriggerEnter2D(Collider2D other)
 
     {
@@ -92,55 +110,88 @@ public class Player : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
-        }   
+        }
     }
 
     private void Die()
     {
 
-        
+
         Destroy(gameObject);
         AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
         FindObjectOfType<Level>().LoadLastScene();
-        
-    }
-     
 
-    public void Fire()
+    }
+
+
+    //Fire control, we need to change this in order to get it working for android
+    //Touch down->fire continuosly with delay so that prefab doesn't overlap
+    //Touch up -> stop firing
+
+    // public void Fire()
+    // {
+    //     if (Input.GetButtonDown("Fire1"))
+    //     {
+    //         firingCoroutine = StartCoroutine(FireContinuously());
+    //     }
+    //     if (Input.GetButtonUp("Fire1"))
+    //     {
+    //         StopCoroutine(firingCoroutine);
+    //     }
+
+
+    // }
+    /*  IEnumerator FireContinuously()
+     {
+         while (true)
+         {
+
+
+             GameObject laser = Instantiate(laserPrefab,
+                     transform.position,
+                     Quaternion.identity) as GameObject;
+             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+             yield return new WaitForSeconds(projectileFiringRate);
+         }
+     } */
+
+    public void Shoot()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if (powerUp.isPowerUp)
         {
-          firingCoroutine =  StartCoroutine(FireContinuously());
-        }
-        if(Input.GetButtonUp("Fire1"))
-        {
-            StopCoroutine(firingCoroutine);
+            Debug.Log("Activate Side Guns");
+            ActivateSideGuns();
+
         }
 
-        
+        GameObject laser = Instantiate(laserPrefab,
+            transform.position,
+            Quaternion.identity) as GameObject;
+        laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+
+
+
+
     }
-    IEnumerator FireContinuously()
-    {
-        while (true)
-        {
 
 
-            GameObject laser = Instantiate(laserPrefab,
-                    transform.position,
-                    Quaternion.identity) as GameObject;
-            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
-            yield return new WaitForSeconds(projectileFiringRate);
-        }
-    }
+    // //Player Move Controller
 
     private void Move()
     {
-        var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
+
+        // Touch Controls 
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0;
+        gameObject.transform.position = mousePosition;
+
+
+        /* var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
         var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
 
-        var newXPos = Mathf.Clamp(transform.position.x + deltaX , minX, maxX);
-        var newYPos = Mathf.Clamp(transform.position.y + deltaY ,  minY, maxY);
-        transform.position = new Vector3(newXPos, newYPos,transform.position.z);
+        var newXPos = Mathf.Clamp(transform.position.x + deltaX, minX, maxX);
+        var newYPos = Mathf.Clamp(transform.position.y + deltaY, minY, maxY);
+        transform.position = new Vector3(newXPos, newYPos, transform.position.z); */
     }
 
     private void SetUpMoveBoundaries()
@@ -157,7 +208,7 @@ public class Player : MonoBehaviour
     {
 
         currentHealth += recoveryBonus;
-        if(currentHealth>=maxHealth)
+        if (currentHealth >= maxHealth)
         {
             currentHealth = maxHealth;
         }
@@ -166,11 +217,11 @@ public class Player : MonoBehaviour
     public void CheckForLevelUps(int score)
     {
         int maxLevel = levelUpScoreRequired.Length;
-        if(currentLevel!=maxLevel && score>=levelUpScoreRequired[currentLevel])
+        if (currentLevel != maxLevel && score >= levelUpScoreRequired[currentLevel])
         {
             HandleLevelUps();
         }
-        else if(currentLevel==maxLevel)
+        else if (currentLevel == maxLevel)
         {
             Debug.Log("Max Level Reached");
         }
@@ -187,7 +238,7 @@ public class Player : MonoBehaviour
 
         maxHealth += levelUpHealthBonus;
         currentHealth = maxHealth;
-        projectileFiringRate +=levelUpFiringRateBonus;
+        projectileFiringRate += levelUpFiringRateBonus;
         projectileSpeed += projectileSpeedBonus;
         FindObjectOfType<HealthBar>().SetMaxHealth(maxHealth);
 
@@ -195,6 +246,7 @@ public class Player : MonoBehaviour
 
     public void ActivateSideGuns()
     {
+
 
         foreach (GameObject guns in sideGuns)
         {
@@ -209,10 +261,12 @@ public class Player : MonoBehaviour
 
         yield return new WaitForSeconds(maxPowerUpDuration);
         Debug.Log("Power Up Duration is : " + maxPowerUpDuration);
+        powerUp.isPowerUp = false;
         foreach (GameObject guns in sideGuns)
         {
             guns.SetActive(false);
         }
+
     }
 }
 
